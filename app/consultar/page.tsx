@@ -3,7 +3,7 @@ export default function Consultar() {
   const mensaje = encodeURIComponent(
     "Hola, quiero consultar mi adeudo. Mi número de contrato es: "
   );
-  const whatsappLink = `https://wa.me/${telefono}?text=${mensaje}`;
+  const whatsappLink = "https://wa.me/" + telefono + "?text=" + mensaje;
 
   return (
     <div className="container page">
@@ -15,17 +15,21 @@ export default function Consultar() {
 
       <div className="card pad">
         <div className="cardH">¿Cómo consultar?</div>
+
         <p className="muted small" style={{ marginTop: 8 }}>
-          1. Da clic en el botón de abajo<br />
-          2. Envía tu número de contrato<br />
+          1. Da clic en el botón de abajo
+          <br />
+          2. Envía tu número de contrato
+          <br />
           3. Un asesor te responde de Lunes a Viernes 9:00 am – 4:00 pm
         </p>
-        
+
+        <a
           href={whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
           className="btn whatsappBtn"
-          style={{ marginTop: 16, display: "inline-block" }}
+          style={{ marginTop: 32, display: "inline-block" }}
         >
           Consultar por WhatsApp
         </a>
