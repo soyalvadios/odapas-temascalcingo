@@ -9,7 +9,8 @@ export default function Consultar() {
     <div className="container page">
       <h1>Consultar adeudo</h1>
       <p className="muted">
-        Para consultar tu adeudo, escríbenos por WhatsApp con tu número de contrato y un asesor te responde en horario de atención.
+        Para consultar tu adeudo, escríbenos por WhatsApp con tu número de
+        contrato y un asesor te responde en horario de atención.
       </p>
 
       <div className="card pad">
