@@ -13,7 +13,7 @@ const pinSvg = `
 </svg>`;
 
 const pinIcon = new L.Icon({
-  iconUrl: `data:image/svg+xml;base64,${typeof window !== "undefined" ? window.btoa(pinSvg) : ""}`,
+  iconUrl: `data:image/svg+xml;base64,${btoa(pinSvg)}`,
   iconSize: [34, 34],
   iconAnchor: [17, 34],
 });

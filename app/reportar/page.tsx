@@ -1,7 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import MapPicker, { LatLng } from "@/components/MapPicker";
+import dynamic from "next/dynamic";
+import type { LatLng } from "@/components/MapPicker";
+
+const MapPicker = dynamic(() => import("@/components/MapPicker"), { ssr: false });
 
 type Address = {
   cp: string;
