@@ -32,8 +32,8 @@ button,input,textarea,select{font:inherit}
 .main{flex:1}
 .page{padding:26px 0 40px}
 
-h1{margin:0 0 10px;font-size:40px;line-height:1.1}
-h2{margin:0 0 10px;font-size:30px;line-height:1.15}
+h1{margin:0 0 10px;font-size:clamp(24px,5vw,40px);line-height:1.1}
+h2{margin:0 0 10px;font-size:clamp(20px,4vw,30px);line-height:1.15}
 p{line-height:1.55}
 .muted{color:var(--muted)}
 .small{font-size:12px}
@@ -400,12 +400,15 @@ p{line-height:1.55}
   align-items:center;
   justify-content:center;
   border-radius:10px;
-  padding:10px 16px;
+  padding:12px 18px;
+  min-height:48px;
   font-weight:800;
+  font-size:15px;
   border:1px solid var(--line);
   background:#fff;
   cursor:pointer;
   transition:transform .2s,box-shadow .2s,background .2s,opacity .2s;
+  -webkit-tap-highlight-color:transparent;
 }
 .btn:disabled{
   opacity:.7;
@@ -442,12 +445,14 @@ p{line-height:1.55}
 .label{display:block;font-size:13px;color:var(--muted);margin:10px 0 6px;font-weight:800}
 .input{
   width:100%;
-  padding:10px 12px;
+  padding:12px 14px;
+  min-height:48px;
   border-radius:12px;
   border:1px solid var(--line);
   background:#fff;
   color:var(--text);
   outline:none;
+  font-size:16px;
   transition:border-color .15s,box-shadow .15s;
 }
 .input:focus{border-color:rgba(14,165,233,.7);box-shadow:0 0 0 4px rgba(14,165,233,.15)}
@@ -559,7 +564,7 @@ p{line-height:1.55}
 .heroRotatorInner{
   max-width:650px;
   padding:56px 0;
-  margin-left:72px;
+  margin-left:clamp(0px,5vw,72px);
 }
 .heroBadge{
   margin-bottom:14px;
@@ -668,11 +673,15 @@ p{line-height:1.55}
   .card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
 }
 
-/* responsive */
+/* =====================================================
+   RESPONSIVE — mobile-first
+   ===================================================== */
+
+/* Tablet + mobile nav (≤900px) */
 @media (max-width: 900px){
-  .container{width:100%;padding:0 14px}
-  .headerRow{min-height:74px;padding:12px 0;flex-wrap:wrap}
-  .brandLogo{width:180px}
+  .container{width:100%;padding:0 16px}
+  .headerRow{min-height:68px;padding:10px 0;flex-wrap:wrap}
+  .brandLogo{width:170px}
   .menuToggle{display:flex}
   .navShell{display:none;width:100%}
   .navShell.show{display:block}
@@ -680,12 +689,18 @@ p{line-height:1.55}
     width:100%;
     flex-direction:column;
     align-items:stretch;
-    gap:8px;
-    padding:10px 0 4px;
+    gap:6px;
+    padding:10px 0 6px;
   }
   .navItem{width:100%}
-  .navLink,.navButton{width:100%;justify-content:space-between}
-  .navLinkAccent{margin-top:4px}
+  .navLink,.navButton{
+    width:100%;
+    justify-content:space-between;
+    min-height:52px;
+    padding:14px 16px;
+    font-size:15px;
+  }
+  .navLinkAccent{margin-top:6px}
   .dropdownMenu{
     position:static;
     min-width:100%;
@@ -698,54 +713,167 @@ p{line-height:1.55}
     box-shadow:none;
     border-radius:14px;
   }
-  .dropdown.open .dropdownMenu{
-    display:block;
-  }
+  .dropdown.open .dropdownMenu{display:block}
   .megaMenu{grid-template-columns:1fr}
   .compactMenu{min-width:100%}
   .grid3{grid-template-columns:1fr}
+  .grid2{grid-template-columns:1fr}
   .footerGrid{grid-template-columns:1fr}
   .reportGrid{grid-template-columns:1fr}
   .row2,.row3{grid-template-columns:1fr}
-  .heroRotator{min-height:460px}
+  .heroRotator{min-height:440px}
   .heroTitle{font-size:32px}
-  .heroText{
-    font-size:18px;
-    max-width:560px;
-  }
+  .heroText{font-size:18px;max-width:100%}
+
+  /* cards más cómodas en tablet */
+  .card{border-radius:16px}
+  .pad{padding:18px}
+
+  /* quickActions — botones de ancho completo en tablet */
+  .quickActions{flex-direction:column}
+  .quickActions .btn{width:100%;justify-content:center}
 }
 
+/* Móvil (≤640px) — zona crítica */
 @media (max-width: 640px){
-  .page{padding:14px 0 22px}
-  h1{font-size:28px}
-  h2{font-size:24px}
-  .grid2{grid-template-columns:1fr}
-  .heroRotator{min-height:420px}
+  .container{padding:0 14px}
+  .page{padding:16px 0 28px}
+
+  /* hero */
+  .heroRotator{min-height:380px}
   .heroSlideOverlay{
-    background:
-      linear-gradient(
-        180deg,
-        rgba(244,249,255,.92) 0%,
-        rgba(244,249,255,.84) 38%,
-        rgba(244,249,255,.58) 70%,
-        rgba(15,23,42,.18) 100%
-      );
+    background:linear-gradient(
+      180deg,
+      rgba(244,249,255,.95) 0%,
+      rgba(244,249,255,.88) 40%,
+      rgba(244,249,255,.60) 72%,
+      rgba(15,23,42,.20) 100%
+    );
   }
   .heroRotatorInner{
     max-width:100%;
-    padding:34px 0 72px;
+    padding:28px 0 64px;
     margin-left:0;
   }
   .heroTitle{
-    font-size:30px;
-    line-height:1.08;
-    margin-bottom:12px;
+    font-size:26px;
+    line-height:1.1;
+    margin-bottom:10px;
   }
   .heroText{
-    font-size:16px;
-    line-height:1.55;
-    margin-bottom:18px;
+    font-size:15px;
+    line-height:1.6;
+    margin-bottom:16px;
   }
+  .heroActions{flex-direction:column;gap:10px}
+  .heroActions .btn{width:100%;justify-content:center}
+  .heroArrow{width:38px;height:38px;font-size:26px}
+
+  /* nav links más grandes para dedo */
+  .navLink,.navButton{
+    min-height:56px;
+    padding:16px 18px;
+    font-size:16px;
+    border-radius:14px;
+    border:1px solid var(--line);
+    background:#fafcff;
+    margin-bottom:2px;
+  }
+  .navLinkAccent{
+    background:var(--primary);
+    color:#fff;
+    border:none;
+  }
+
+  /* cards */
+  .card{border-radius:14px}
+  .pad{padding:16px}
+  .cardH{font-size:16px;margin-bottom:8px}
+  .badge{font-size:11px;padding:5px 10px}
+
+  /* grids */
+  .grid2,.grid3{gap:10px}
+
+  /* form */
+  .label{font-size:14px;margin:12px 0 6px}
+  .input{
+    padding:14px;
+    font-size:16px;
+    min-height:52px;
+    border-radius:14px;
+  }
+  textarea.input{min-height:120px}
+  select.input{min-height:52px}
+
+  /* botones grandes, fáciles de tocar */
+  .btn{
+    padding:14px 20px;
+    min-height:52px;
+    font-size:15px;
+    border-radius:12px;
+  }
+  .btn.primary{font-size:16px}
+
+  /* quickActions — columna completa */
+  .quickActions{flex-direction:column;gap:10px}
+  .quickActions .btn{width:100%;justify-content:center}
+
+  /* footer */
+  .footerGrid{gap:18px}
+  .footer{padding:24px 0}
+  .footerBottom{flex-direction:column;gap:6px;font-size:13px}
+
+  /* bot flotante: más pequeño en móvil para no tapar contenido */
+  .odapasBotWrap{right:12px;bottom:12px}
+  .odapasBotLauncher{width:62px;height:62px}
+  .odapasBotPanel{
+    width:calc(100vw - 24px);
+    right:0;
+    bottom:78px;
+    border-radius:18px;
+  }
+  .odapasBotHeader{padding:12px 14px}
+  .odapasBotTitle{font-size:15px}
+  .odapasBotSubtitle{font-size:12px}
+  .odapasBotBody{padding:12px}
+  .odapasBotBubble{font-size:14px}
+  .odapasBotActions button,
+  .odapasBotActions a{
+    padding:14px 16px;
+    font-size:15px;
+    border-radius:14px;
+    min-height:52px;
+    display:flex;
+    align-items:center;
+  }
+
+  /* reporte: mapa debajo del formulario, altura razonable */
+  .mapFrame iframe{height:260px !important}
+
+  /* privacidad: checkbox más fácil de marcar */
+  .privacyRow input[type="checkbox"]{
+    width:22px;
+    height:22px;
+    min-width:22px;
+    cursor:pointer;
+  }
+
+  /* statusBox */
+  .statusBox{font-size:14px;padding:12px}
+
+  /* secciones con menos espacio vertical */
+  .sectionHead{margin-bottom:12px}
+  .pageTight{padding-top:4px}
+}
+
+/* Pantallas muy pequeñas (≤375px) */
+@media (max-width: 375px){
+  .container{padding:0 12px}
+  .heroTitle{font-size:23px}
+  .heroText{font-size:14px}
+  .brandLogo{width:150px}
+  .btn{font-size:14px;padding:13px 16px}
+  .input{font-size:15px}
 }
 .sectionHead{
   margin-bottom:14px;
@@ -918,19 +1046,357 @@ p{line-height:1.55}
   background:#dbeafe;
 }
 
-@media (max-width: 640px){
-  .odapasBotWrap{
-    right:12px;
-    bottom:12px;
+
+
+
+/* =====================================================
+   HOMEPAGE — clases nuevas (mobile-first)
+   ===================================================== */
+
+/* Barra de accesos rápidos — solo móvil */
+.mobileQuickBar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .mobileQuickBar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 4px;
   }
 
-  .odapasBotLauncher{
-    width:74px;
-    height:74px;
+  .mqbItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 12px 6px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    text-decoration: none;
+    border-right: 1px solid var(--line);
+    transition: background .15s, color .15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .mqbItem:last-child { border-right: none; }
+  .mqbItem:active { background: var(--primary-soft); color: var(--primary-dark); }
+
+  .mqbItem--primary {
+    color: var(--primary-dark);
+    background: var(--primary-soft);
   }
 
-  .odapasBotPanel{
-    width:300px;
-    bottom:86px;
+  .mqbIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--primary-soft);
+    color: var(--primary-dark);
+  }
+  .mqbItem--primary .mqbIcon {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  .mqbLabel { line-height: 1.2; text-align: center; }
+
+  /* Ocultar la sección quickActions de desktop en móvil */
+  .desktopQuickActions { display: none; }
+}
+
+/* Icono en card */
+.cardIconRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.cardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.cardIcon--blue  { background: #e0f2fe; color: #0369a1; }
+.cardIcon--red   { background: #fee2e2; color: #b91c1c; }
+.cardIcon--teal  { background: #d1fae5; color: #065f46; }
+.cardIcon--gray  { background: #f1f5f9; color: #475569; }
+
+/* Tira de contacto rápido */
+.contactStrip {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contactStrip__item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex: 1;
+  min-width: 120px;
+}
+
+.contactStrip__link {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  text-decoration: none;
+}
+.contactStrip__link--wa { color: #16a34a; }
+.contactStrip__link:hover { text-decoration: underline; }
+
+.contactStrip__divider {
+  width: 1px;
+  height: 28px;
+  background: var(--line);
+  flex-shrink: 0;
+}
+
+/* Banner de alerta (descomentarlo cuando sea necesario) */
+.alertBanner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 12px;
+  flex-wrap: wrap;
+}
+.alertBanner__icon { font-size: 18px; flex-shrink: 0; }
+.alertBanner__text { flex: 1; font-size: 14px; color: #92400e; margin: 0; }
+.alertBanner__link {
+  font-size: 13px;
+  font-weight: 700;
+  color: #b45309;
+  text-decoration: underline;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .contactStrip { gap: 10px; padding: 12px 14px; }
+  .contactStrip__divider { display: none; }
+  .contactStrip__item { min-width: 0; flex: 1 1 40%; }
+}
+
+/* =====================================================
+   HOMEPAGE — clases nuevas mobile-first
+   Pega esto al FINAL de tu globals.css
+   ===================================================== */
+
+/* ── Barra accesos rápidos (solo móvil) ─────────────── */
+.mobileQuickBar { display: none; }
+
+@media (max-width: 640px) {
+  .mobileQuickBar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+  }
+  .mqbItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px 4px 9px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    text-decoration: none;
+    border-right: 1px solid var(--line);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .mqbItem:last-child { border-right: none; }
+  .mqbItem:active    { background: var(--primary-soft); }
+  .mqbItem--primary  { color: var(--primary-dark); background: var(--primary-soft); }
+  .mqbIcon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    background: #f1f5f9;
+    color: var(--muted);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .mqbItem--primary .mqbIcon { background: var(--primary); color: #fff; }
+  .mqbLabel { line-height: 1.1; text-align: center; }
+}
+
+/* ── serviceGrid — 2 cols en móvil, 4 en desktop ────── */
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.serviceCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 18px 16px;
+  border-radius: 16px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform .18s, box-shadow .18s;
+  -webkit-tap-highlight-color: transparent;
+}
+.serviceCard:active { transform: scale(.97); }
+
+.serviceCard--blue  { background: #e0f2fe; border-color: #bae6fd; color: #0369a1; }
+.serviceCard--red   { background: #fee2e2; border-color: #fecaca; color: #b91c1c; }
+.serviceCard--teal  { background: #d1fae5; border-color: #a7f3d0; color: #065f46; }
+.serviceCard--gray  { background: #f1f5f9; border-color: #e2e8f0; color: #475569; }
+
+.serviceCard__icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.65);
+  display: flex; align-items: center; justify-content: center;
+}
+.serviceCard__title {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.serviceCard__desc {
+  font-size: 12px;
+  opacity: .75;
+  line-height: 1.35;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .serviceCard:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
   }
 }
+
+@media (max-width: 900px) {
+  .serviceGrid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+
+@media (max-width: 640px) {
+  .serviceGrid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .serviceCard { padding: 14px 13px; gap: 8px; border-radius: 14px; }
+  .serviceCard__icon { width: 42px; height: 42px; border-radius: 10px; }
+  .serviceCard__title { font-size: 14px; }
+  .serviceCard__desc { font-size: 11px; }
+}
+
+/* ── infoGrid — lista compacta de links institucionales ─ */
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.infoCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 14px;
+  transition: background .15s, border-color .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.infoCard:active { background: var(--primary-soft); border-color: #bae6fd; }
+.infoCard__title { flex: 1; line-height: 1.3; }
+.infoCard__arrow { color: var(--primary); font-size: 16px; flex-shrink: 0; }
+
+@media (hover: hover) and (pointer: fine) {
+  .infoCard:hover { background: var(--primary-soft); border-color: #bae6fd; color: var(--primary-dark); }
+}
+
+@media (max-width: 640px) {
+  .infoGrid { grid-template-columns: 1fr; gap: 6px; }
+  .infoCard { padding: 13px 14px; font-size: 14px; border-radius: 11px; }
+}
+
+/* ── contactStrip ───────────────────────────────────── */
+.contactStrip {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 18px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.contactStrip__item {
+  display: flex; align-items: center; gap: 7px;
+  flex: 1; min-width: 110px;
+}
+.contactStrip__link { font-size: 13px; font-weight: 700; color: var(--primary-dark); text-decoration: none; }
+.contactStrip__link--wa { color: #16a34a; }
+.contactStrip__link:hover { text-decoration: underline; }
+.contactStrip__divider { width: 1px; height: 24px; background: var(--line); flex-shrink: 0; }
+
+@media (max-width: 640px) {
+  .contactStrip { padding: 12px 14px; gap: 10px; }
+  .contactStrip__divider { display: none; }
+  .contactStrip__item { min-width: 0; flex: 1 1 40%; }
+}
+
+/* ── desktopOnly — ocultar bloques en móvil ─────────── */
+.desktopOnly { display: block; }
+
+@media (max-width: 640px) {
+  .desktopOnly { display: none; }
+}
+/* =====================================================
+   REPORTAR — agrega esto al FINAL de tu globals.css
+   ===================================================== */
+
+/* Botón enviar por WhatsApp */
+.btnWhatsappSubmit {
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+  background: #25D366;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  padding: 14px 20px;
+  min-height: 54px;
+  border-radius: 12px;
+  margin-top: 8px;
+}
+.btnWhatsappSubmit:hover  { background: #1ebe5d; }
+.btnWhatsappSubmit:active { background: #17a34a; transform: scale(.98); }
+
+/* StatusBox variante error */
+.statusBox--error {
+  background: #fff1f2;
+  border-color: #fecdd3;
+  color: #be123c;
+}
+
