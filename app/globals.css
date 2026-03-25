@@ -692,6 +692,74 @@ p{line-height:1.55}
     gap:6px;
     padding:10px 0 6px;
   }
+
+  .mobileMenu{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:rgba(247,249,252,.96);
+    backdrop-filter:blur(10px);
+    display:flex;
+    flex-direction:column;
+    height:100dvh;
+    overflow:hidden;
+  }
+
+  .mobileMenu__header{
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:18px 16px 14px;
+    background:rgba(255,255,255,.82);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(8px);
+  }
+
+  .mobileMenu__brand{
+    display:flex;
+    align-items:center;
+    min-width:0;
+  }
+
+  .mobileMenu__brand .brandLogo{
+    width:170px;
+    max-width:100%;
+    height:auto;
+  }
+
+  .mobileMenu__close{
+    width:56px;
+    height:56px;
+    border:none;
+    border-radius:18px;
+    background:#fff;
+    border:1px solid var(--line);
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    cursor:pointer;
+    box-shadow:0 8px 24px rgba(15,23,42,.06);
+  }
+
+  .mobileMenu__body{
+    flex:1;
+    min-height:0;
+    overflow-y:auto;
+    overflow-x:hidden;
+    -webkit-overflow-scrolling:touch;
+    padding:14px 16px 28px;
+    overscroll-behavior:contain;
+  }
+
+  .mobileMenu__panel{
+    display:grid;
+    gap:12px;
+  }
+
   .navItem{width:100%}
   .navLink,.navButton{
     width:100%;
@@ -700,7 +768,9 @@ p{line-height:1.55}
     padding:14px 16px;
     font-size:15px;
   }
+
   .navLinkAccent{margin-top:6px}
+
   .dropdownMenu{
     position:static;
     min-width:100%;
@@ -711,8 +781,11 @@ p{line-height:1.55}
     transform:none;
     display:none;
     box-shadow:none;
-    border-radius:14px;
+    border-radius:18px;
+    border:1px solid var(--line);
+    background:#f8fbff;
   }
+
   .dropdown.open .dropdownMenu{display:block}
   .megaMenu{grid-template-columns:1fr}
   .compactMenu{min-width:100%}
@@ -725,15 +798,67 @@ p{line-height:1.55}
   .heroTitle{font-size:32px}
   .heroText{font-size:18px;max-width:100%}
 
-  /* cards más cómodas en tablet */
   .card{border-radius:16px}
   .pad{padding:18px}
 
-  /* quickActions — botones de ancho completo en tablet */
   .quickActions{flex-direction:column}
   .quickActions .btn{width:100%;justify-content:center}
 }
 
+@media (max-width: 900px){
+  .navLink,
+  .navButton{
+    min-height:58px;
+    padding:18px 20px;
+    font-size:16px;
+    font-weight:800;
+    border-radius:20px;
+    border:1px solid #d9e2ec;
+    background:#f8fafc;
+    color:#64748b;
+  }
+
+  .dropdownMenu{
+    padding:14px;
+  }
+
+  .compactMenu.lgcgScrollableMenu{
+    width:100%;
+    min-width:100%;
+    max-width:100%;
+  }
+
+  .lgcgPanel{
+    border-radius:20px;
+    padding:12px;
+    background:#f7faff;
+  }
+
+  .lgcgPanelTitle{
+    border-radius:18px;
+    font-size:18px;
+    padding:14px 16px;
+  }
+
+  .lgcgScrollArea{
+    max-height:none;
+    overflow:visible;
+    padding-right:0;
+  }
+
+  .lgcgTrigger,
+  .lgcgLeaf{
+    min-height:58px;
+    border-radius:18px;
+    padding:16px 18px;
+    font-size:15px;
+  }
+}
+
+body.menu-open{
+  overflow:hidden;
+  touch-action:none;
+}
 /* Móvil (≤640px) — zona crítica */
 @media (max-width: 640px){
   .container{padding:0 14px}

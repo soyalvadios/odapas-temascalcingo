@@ -253,8 +253,15 @@ export default function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    if (mobileOpen) {
+      document.body.classList.add("menu-open");
+    } else {
+      document.body.classList.remove("menu-open");
+    }
+
+    return () => {
+      document.body.classList.remove("menu-open");
+    };
   }, [mobileOpen]);
 
   function toggleMainMenu(menu: MenuKey) {
@@ -305,10 +312,7 @@ export default function SiteHeader() {
               <span />
             </button>
 
-            <nav
-              className={`navShell ${mobileOpen ? "show" : ""}`}
-              aria-label="Navegación principal"
-            >
+            <nav className="navShell" aria-label="Navegación principal">
               <div className="nav">
                 <Link href="/" className="navLink" onClick={closeAll}>
                   Inicio
@@ -384,6 +388,106 @@ export default function SiteHeader() {
                 </Link>
               </div>
             </nav>
+
+            {mobileOpen && (
+              <div className="mobileMenu" aria-label="Menú móvil">
+                <div className="mobileMenu__header">
+                  <Link href="/" aria-label="Inicio" className="mobileMenu__brand" onClick={closeAll}>
+                    <Image
+                      src="/banner.png"
+                      alt="ODAPAS Temascalcingo"
+                      width={220}
+                      height={60}
+                      priority
+                      className="brandLogo"
+                    />
+                  </Link>
+
+                  <button
+                    type="button"
+                    className="mobileMenu__close"
+                    aria-label="Cerrar menú"
+                    onClick={closeAll}
+                  >
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M18 6 6 18" />
+                      <path d="m6 6 12 12" />
+                    </svg>
+                  </button>
+                </div>
+
+                <div className="mobileMenu__body">
+                  <div className="mobileMenu__panel">
+                    <div className="nav">
+                      <Link href="/" className="navLink" onClick={closeAll}>
+                        Inicio
+                      </Link>
+
+                      <div className={`navItem dropdown ${openMenu === "servicios" ? "open" : ""}`}>
+                        <button
+                          type="button"
+                          className="navLink navButton"
+                          onClick={() => toggleMainMenu("servicios")}
+                          aria-expanded={openMenu === "servicios"}
+                        >
+                          Servicios <span className="caret">▾</span>
+                        </button>
+
+                        <div className="dropdownMenu megaMenu">
+                          <div className="megaCol">
+                            <div className="megaTitle">Trámites y atención</div>
+                            <Link href="/pagar" className="dropdownLink" onClick={closeAll}>Pagar servicio</Link>
+                            <Link href="/consultar" className="dropdownLink" onClick={closeAll}>Consultar adeudo</Link>
+                            <Link href="/reportar" className="dropdownLink" onClick={closeAll}>Reportar fuga o incidencia</Link>
+                          </div>
+                          <div className="megaCol">
+                            <div className="megaTitle">Información útil</div>
+                            <Link href="/ubicaciones" className="dropdownLink" onClick={closeAll}>Ubicación oficial</Link>
+                            <Link href="/cultura-agua" className="dropdownLink" onClick={closeAll}>Cultura del agua</Link>
+                            <Link href="/noticias" className="dropdownLink" onClick={closeAll}>Noticias y avisos</Link>
+                            <Link href="/contacto" className="dropdownLink" onClick={closeAll}>Contacto</Link>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className={`navItem dropdown ${infoOpen ? "open" : ""}`}>
+                        <button
+                          type="button"
+                          className="navLink navButton"
+                          onClick={() => toggleMainMenu("informacion")}
+                          aria-expanded={infoOpen}
+                        >
+                          Información <span className="caret">▾</span>
+                        </button>
+
+                        <div className="dropdownMenu compactMenu lgcgScrollableMenu">
+                          <Link href="/quienes-somos" className="dropdownLink" onClick={closeAll}>¿Quiénes somos?</Link>
+                          <Link href="/transparencia" className="dropdownLink" onClick={closeAll}>Transparencia</Link>
+
+                          <div className="lgcgPanel">
+                            <div className="lgcgPanelTitle">LGCG</div>
+                            <div className="lgcgScrollArea">
+                              <TreeMenu
+                                items={lgcgMenu}
+                                openNodes={openNodes}
+                                toggleNode={toggleNode}
+                                closeAll={closeAll}
+                              />
+                            </div>
+                          </div>
+
+                          <Link href="/contacto" className="dropdownLink" onClick={closeAll}>Contacto</Link>
+                        </div>
+                      </div>
+
+                      <Link href="/pagar" className="navLink navLinkAccent" onClick={closeAll}>
+                        Pagar
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </>
         )}
 
