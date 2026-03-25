@@ -1400,3 +1400,55 @@ p{line-height:1.55}
   color: #be123c;
 }
 
+/* =====================================================
+   ANIMACIONES DE SCROLL — agrega al FINAL de globals.css
+   ===================================================== */
+
+/* Estado inicial — oculto y desplazado hacia abajo */
+.anim-hidden {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+/* Estado final — visible en posición */
+.anim-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Transición base — aplica a ambos estados */
+.anim-block {
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* Respetar preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .anim-hidden  { opacity: 0; transform: none; }
+  .anim-visible { opacity: 1; transform: none; }
+  .anim-block   { transition: opacity 0.3s ease; }
+}
+
+/* ── Animación del hero — texto entra desde la izquierda ── */
+.heroAnim-hidden {
+  opacity: 0;
+  transform: translateX(-24px);
+}
+.heroAnim-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.heroAnim-block {
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroAnim-hidden  { opacity: 0; transform: none; }
+  .heroAnim-visible { opacity: 1; transform: none; }
+  .heroAnim-block   { transition: opacity 0.3s ease; }
+}
