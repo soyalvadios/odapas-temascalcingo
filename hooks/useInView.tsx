@@ -1,23 +1,27 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, CSSProperties, ReactNode } from "react";
 
-interface UseInViewOptions {
-  threshold?: number;   // qué tanto del elemento debe ser visible (0–1)
-  rootMargin?: string;  // margen extra antes de activar
-  once?: boolean;       // solo animar una vez (recomendado)
-}
+type UseInViewOptions = {
+  threshold?: number;
+  rootMargin?: string;
+  once?: boolean;
+};
 
 export function useInView(options: UseInViewOptions = {}) {
-  const { threshold = 0.12, rootMargin = "0px 0px -40px 0px", once = true } = options;
-  const ref = useRef<HTMLElement>(null);
+  const {
+    threshold = 0.12,
+    rootMargin = "0px 0px -40px 0px",
+    once = true,
+  } = options;
+
+  const ref = useRef<HTMLDivElement | null>(null);
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    const element = ref.current;
+    if (!element) return;
 
-    // Si el navegador no soporta IntersectionObserver (muy raro), mostrar directo
     if (!("IntersectionObserver" in window)) {
       setInView(true);
       return;
@@ -27,7 +31,7 @@ export function useInView(options: UseInViewOptions = {}) {
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
-          if (once) observer.unobserve(el);
+          if (once) observer.unobserve(element);
         } else if (!once) {
           setInView(false);
         }
@@ -35,39 +39,36 @@ export function useInView(options: UseInViewOptions = {}) {
       { threshold, rootMargin }
     );
 
-    observer.observe(el);
+    observer.observe(element);
+
     return () => observer.disconnect();
   }, [threshold, rootMargin, once]);
 
   return { ref, inView };
 }
 
-// Componente wrapper para animar cualquier bloque al hacer scroll
-// Uso: <AnimOnScroll delay={100}><div>...</div></AnimOnScroll>
-interface AnimOnScrollProps {
-  children: React.ReactNode;
-  delay?: number;       // delay en ms para stagger (0, 100, 200...)
+type AnimOnScrollProps = {
+  children: ReactNode;
+  delay?: number;
   className?: string;
-  style?: React.CSSProperties;
-  as?: keyof JSX.IntrinsicElements;
-}
+  style?: CSSProperties;
+};
 
 export function AnimOnScroll({
   children,
   delay = 0,
   className = "",
-  style = {},
-  as: Tag = "div",
+  style,
 }: AnimOnScrollProps) {
   const { ref, inView } = useInView();
 
   return (
-    <Tag
-      ref={ref as any}
+    <div
+      ref={ref}
       className={`anim-block ${inView ? "anim-visible" : "anim-hidden"} ${className}`}
       style={{ transitionDelay: `${delay}ms`, ...style }}
     >
       {children}
-    </Tag>
+    </div>
   );
 }
