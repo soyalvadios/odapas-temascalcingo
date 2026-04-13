@@ -3,13 +3,12 @@
 import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import type { LatLng, MapPickerProps } from "@/components/MapPicker";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 
 const MapPicker = dynamic<MapPickerProps>(
   () => import("@/components/MapPicker").then((mod) => mod.default),
   { ssr: false }
 );
-
-const WHATSAPP_NUMBER = "525642275320";
 
 type Address = {
   cp: string;

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 type BotStep = "home" | "pagar" | "reportar" | "ubicacion" | "contacto" | "lgcg";
 
 export default function OdapasBot() {
@@ -10,7 +10,7 @@ export default function OdapasBot() {
   const [step, setStep] = useState<BotStep>("home");
 
   const whatsapp = useMemo(() => {
-    const telefono = "5212207402561";
+    const telefono = "5215642275320";
     return {
       pagos: `https://wa.me/${telefono}?text=${encodeURIComponent("Hola, quiero información sobre mi pago del servicio de agua.")}`,
       reporte: `https://wa.me/${telefono}?text=${encodeURIComponent("Hola, quiero reportar una fuga o incidencia.")}`,
