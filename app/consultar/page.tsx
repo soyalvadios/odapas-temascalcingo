@@ -1,5 +1,5 @@
 export default function Consultar() {
-  const telefono = "5212207402561";
+  const telefono = "5215642275320";
   const mensaje = encodeURIComponent(
     "Hola, quiero consultar mi adeudo. Mi número de contrato es: "
   );

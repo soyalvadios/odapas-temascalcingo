@@ -391,6 +391,7 @@ export default function SiteHeader() {
                       height={60}
                       priority
                       className="brandLogo"
+                      style={{ width: "auto", height: "auto" }}
                     />
                   </Link>
 

@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 export default function Pagar() {
-  const telefono = "5212207402561";
+  const telefono = "5215642275320";
 
   const mensaje = encodeURIComponent(
     "Hola, quiero enviar mi comprobante de pago del servicio de agua."
