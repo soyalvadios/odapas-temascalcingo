@@ -16,16 +16,13 @@ export function useInView(options: UseInViewOptions = {}) {
   } = options;
 
   const ref = useRef<HTMLDivElement | null>(null);
-  const [inView, setInView] = useState(false);
+  const [inView, setInView] = useState(() => typeof window !== "undefined" && !("IntersectionObserver" in window));
 
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
-    if (!("IntersectionObserver" in window)) {
-      setInView(true);
-      return;
-    }
+    if (!("IntersectionObserver" in window)) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {

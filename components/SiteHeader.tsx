@@ -222,13 +222,6 @@ function TreeMenu({ items, openNodes, toggleNode, closeAll, depth = 0 }: TreePro
 }
 
 export default function SiteHeader() {
-  // ── HYDRATION GUARD ─────────────────────────────────────────────────────────
-  // Evita que el servidor y cliente difieran en el markup inicial del header,
-  // lo que causaba que React tirara el DOM y renderizara sin estilos.
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { setMounted(true); }, []);
-  // ────────────────────────────────────────────────────────────────────────────
-
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<MenuKey>(null);
   const [openNodes, setOpenNodes] = useState<Record<string, boolean>>({});
@@ -294,9 +287,7 @@ export default function SiteHeader() {
           />
         </Link>
 
-        {/* El toggle y el nav solo se renderizan en cliente para evitar hydration mismatch */}
-        {mounted && (
-          <>
+        <>
             <button
               type="button"
               className={`menuToggle ${mobileOpen ? "active" : ""}`}
@@ -488,13 +479,8 @@ export default function SiteHeader() {
                 </div>
               </div>
             )}
-          </>
-        )}
+        </>
 
-        {/* Versión estática para SSR — invisible, solo ocupa espacio para evitar layout shift */}
-        {!mounted && (
-          <div style={{ width: 46, height: 46 }} aria-hidden="true" />
-        )}
       </div>
     </header>
   );
