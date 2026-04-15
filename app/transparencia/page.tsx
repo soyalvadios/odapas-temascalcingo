@@ -21,7 +21,7 @@ export default function TransparenciaPage() {
           <div className="badge">Privacidad</div>
           <div className="cardH">Aviso de Privacidad</div>
           <p className="muted small">
-            Consulta el aviso de privacidad aplicable a formularios, atención y servicios del portal.
+            Consulta la versión web y el PDF oficial vigente del aviso de privacidad integral de ODAPAS Temascalcingo.
           </p>
           <Link href="/aviso-privacidad" className="btn">Ver aviso</Link>
         </div>

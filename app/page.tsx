@@ -143,9 +143,9 @@ export default function HomePage() {
           </AnimOnScroll>
           <AnimOnScroll delay={80}>
             <div className="card pad">
-              <div className="badge">Obras</div>
-              <div className="cardH">Trabajos y acciones del organismo</div>
-              <p className="muted small">Reparaciones, ampliaciones y mejoras.</p>
+              <div className="badge">Trabajos</div>
+              <div className="cardH">Trabajos del organismo</div>
+              <p className="muted small">Mantenimiento, limpieza y acciones operativas.</p>
             </div>
           </AnimOnScroll>
           <AnimOnScroll delay={160}>
