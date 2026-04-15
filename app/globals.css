@@ -167,6 +167,14 @@ p{line-height:1.55}
   min-width: 420px;
   width: 420px;
   max-width: min(92vw, 420px);
+  max-height: calc(100dvh - 120px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   z-index: 1300;
 }
 
@@ -176,6 +184,9 @@ p{line-height:1.55}
   border: 1px solid #dbeafe;
   border-radius: 16px;
   background: #f8fbff;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .lgcgPanelTitle{
@@ -189,10 +200,10 @@ p{line-height:1.55}
 }
 
 .lgcgScrollArea{
-  max-height: 68vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 4px;
+  min-height: 0;
+  max-height: none;
+  overflow: visible;
+  padding-right: 0;
   scroll-behavior: smooth;
 }
 
@@ -826,6 +837,7 @@ p{line-height:1.55}
     width:100%;
     min-width:100%;
     max-width:100%;
+    max-height:none;
   }
 
   .lgcgPanel{
