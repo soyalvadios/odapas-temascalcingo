@@ -167,7 +167,7 @@ p{line-height:1.55}
   min-width: 420px;
   width: 420px;
   max-width: min(92vw, 420px);
-  max-height: calc(100dvh - 120px);
+  max-height: calc(100dvh - 110px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -184,6 +184,7 @@ p{line-height:1.55}
   flex-direction: column;
   min-height: 0;
   flex: 1 1 auto;
+  overflow: hidden;
 }
 
 .lgcgScrollArea{
@@ -191,10 +192,12 @@ p{line-height:1.55}
   flex: 1 1 auto;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-right: 4px;
+  max-height: 100%;
+  padding-right: 6px;
   scroll-behavior: smooth;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 
 
@@ -836,13 +839,14 @@ p{line-height:1.55}
     width:100%;
     min-width:100%;
     max-width:100%;
-    max-height:none;
+    max-height: calc(100dvh - 96px);
   }
 
   .lgcgPanel{
     border-radius:20px;
     padding:12px;
     background:#f7faff;
+    overflow: hidden;
   }
 
   .lgcgPanelTitle{
@@ -853,10 +857,14 @@ p{line-height:1.55}
 
   .lgcgScrollArea{
   min-height: 0;
+  flex: 1 1 auto;
+  max-height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: none;
-  padding-right: 0;
+  padding-right: 2px;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 
   .lgcgTrigger,
@@ -1589,4 +1597,12 @@ body.menu-open{
   .heroAnim-hidden  { opacity: 0; transform: none; }
   .heroAnim-visible { opacity: 1; transform: none; }
   .heroAnim-block   { transition: opacity 0.3s ease; }
+}
+
+
+/* FIX EXTRA LGCG MOVIL */
+@media (max-width: 640px){
+  .compactMenu.lgcgScrollableMenu{
+    max-height: calc(100dvh - 88px);
+  }
 }
