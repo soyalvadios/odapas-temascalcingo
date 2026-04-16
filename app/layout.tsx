@@ -12,15 +12,6 @@ export const metadata: Metadata = {
   },
   description:
     "Portal oficial de ODAPAS Temascalcingo. Consulta adeudos, realiza pagos, reporta fugas, revisa noticias, transparencia y datos de contacto.",
-  keywords: [
-    "ODAPAS Temascalcingo",
-    "agua Temascalcingo",
-    "pago de agua Temascalcingo",
-    "consulta adeudo ODAPAS",
-    "reportar fuga Temascalcingo",
-    "transparencia ODAPAS",
-    "aviso de privacidad ODAPAS",
-  ],
   alternates: {
     canonical: "/",
   },
@@ -42,23 +33,17 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    nocache: false,
     googleBot: {
       index: true,
       follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" data-scroll-behavior="smooth">
       <body>
@@ -72,52 +57,30 @@ export default function RootLayout({
               <div>
                 <div className="footerTitle">ODAPAS Temascalcingo</div>
                 <p className="muted">
-                  Portal oficial de atención ciudadana. Consulta adeudos, realiza
-                  pagos, reporta fugas y revisa información pública del organismo.
+                  Portal informativo y de atención ciudadana. Para emergencias, utiliza los contactos oficiales.
                 </p>
               </div>
-
               <div>
                 <div className="footerTitle">Accesos</div>
                 <ul className="list">
-                  <li>
-                    <Link href="/pagar">Pagar</Link>
-                  </li>
-                  <li>
-                    <Link href="/consultar">Consultar</Link>
-                  </li>
-                  <li>
-                    <Link href="/reportar">Reportar</Link>
-                  </li>
-                  <li>
-                    <Link href="/ubicaciones">Ubicación</Link>
-                  </li>
+                  <li><Link href="/pagar">Pagar</Link></li>
+                  <li><Link href="/consultar">Consultar</Link></li>
+                  <li><Link href="/reportar">Reportar</Link></li>
+                  <li><Link href="/ubicaciones">Ubicación</Link></li>
                 </ul>
               </div>
-
               <div>
                 <div className="footerTitle">Información</div>
                 <ul className="list">
-                  <li>
-                    <Link href="/quienes-somos">¿Quiénes somos?</Link>
-                  </li>
-                  <li>
-                    <Link href="/noticias">Noticias</Link>
-                  </li>
-                  <li>
-                    <Link href="/transparencia">Transparencia</Link>
-                  </li>
-                  <li>
-                    <Link href="/aviso-privacidad">Aviso de privacidad</Link>
-                  </li>
+                  <li><Link href="/quienes-somos">¿Quiénes somos?</Link></li>
+                  <li><Link href="/transparencia">Transparencia</Link></li>
+                  <li><Link href="/aviso-privacidad">Aviso de privacidad</Link></li>
                 </ul>
               </div>
             </div>
 
             <div className="container footerBottom">
-              <span className="muted">
-                © {new Date().getFullYear()} ODAPAS Temascalcingo
-              </span>
+              <span className="muted">© {new Date().getFullYear()} ODAPAS Temascalcingo</span>
             </div>
           </footer>
 

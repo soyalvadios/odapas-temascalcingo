@@ -1,18 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Pago de agua",
-  description:
-    "Realiza tu pago de agua en línea en el portal oficial de ODAPAS Temascalcingo.",
-  alternates: {
-    canonical: "/pagar",
-  },
-};
-
-export default function Pagar() {
+export default function PagarClient() {
   const telefono = "5215642275320";
 
   const mensaje = encodeURIComponent(
@@ -56,7 +46,6 @@ export default function Pagar() {
       </p>
 
       <div className="grid2">
-        {/* DATOS BANCARIOS */}
         <div className="card pad">
           <div className="cardH">Datos para transferencia</div>
 
@@ -100,7 +89,6 @@ export default function Pagar() {
           </p>
         </div>
 
-        {/* TABLA COMPARATIVA */}
         <div className="card pad">
           <div className="cardH">Tarifas del servicio</div>
 
@@ -183,7 +171,6 @@ export default function Pagar() {
           </p>
         </div>
 
-        {/* REFERENCIA Y VALIDACIÓN */}
         <div className="card pad">
           <div className="cardH">Importante antes de enviar tu comprobante</div>
 
@@ -204,7 +191,6 @@ export default function Pagar() {
           </p>
         </div>
 
-        {/* ENVIAR COMPROBANTE */}
         <div className="card pad cardLink">
           <div className="cardH">Enviar comprobante</div>
 
