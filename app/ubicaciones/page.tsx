@@ -1,5 +1,14 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Ubicación y contacto",
+  description:
+    "Consulta ubicación, atención y datos de contacto de ODAPAS Temascalcingo.",
+  alternates: {
+    canonical: "/ubicaciones",
+  },
+};
 export default function UbicacionesPage() {
   return (
     <div className="container page">

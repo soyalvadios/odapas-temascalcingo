@@ -1,5 +1,14 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Noticias y trabajos",
+  description:
+    "Consulta noticias, trabajos, avisos y acciones de ODAPAS Temascalcingo.",
+  alternates: {
+    canonical: "/noticias",
+  },
+};
 const fotosTrabajo = [
   "/noticias/trabajos-odapas-1.png",
   "/noticias/trabajos-odapas-2.png",

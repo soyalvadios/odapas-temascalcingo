@@ -1,6 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Pago de agua",
+  description:
+    "Realiza tu pago de agua en línea en el portal oficial de ODAPAS Temascalcingo.",
+  alternates: {
+    canonical: "/pagar",
+  },
+};
 
 export default function Pagar() {
   const telefono = "5215642275320";

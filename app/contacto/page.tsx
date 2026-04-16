@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contacto",
+  description:
+    "Consulta los medios de contacto oficiales de ODAPAS Temascalcingo.",
+  alternates: {
+    canonical: "/contacto",
+  },
+};
 export default function Contacto(){
   return (
     <div className="container page">

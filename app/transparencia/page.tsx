@@ -1,4 +1,14 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Transparencia",
+  description:
+    "Consulta información de transparencia de ODAPAS Temascalcingo.",
+  alternates: {
+    canonical: "/transparencia",
+  },
+};
 
 export default function TransparenciaPage() {
   return (

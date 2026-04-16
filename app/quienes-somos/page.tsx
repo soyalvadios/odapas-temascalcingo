@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "¿Quiénes somos?",
+  description:
+    "Conoce la misión, funciones e información institucional de ODAPAS Temascalcingo.",
+  alternates: {
+    canonical: "/quienes-somos",
+  },
+};
 export default function QuienesSomos() {
   return (
     <div className="container page">

@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Cultura del agua",
+  description:
+    "Consulta información y contenidos de cultura del agua de ODAPAS Temascalcingo.",
+  alternates: {
+    canonical: "/cultura-agua",
+  },
+};
 export default function CulturaAgua() {
   return (
     <div className="container page">

@@ -1,5 +1,14 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Aviso de privacidad",
+  description:
+    "Consulta el aviso de privacidad integral de ODAPAS Temascalcingo.",
+  alternates: {
+    canonical: "/aviso-privacidad",
+  },
+};
 const finalidadesPrincipales = [
   "Alta y baja de tomas de agua.",
   "Instalación o reubicación de tomas de agua y conexiones de drenaje.",

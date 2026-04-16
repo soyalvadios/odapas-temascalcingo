@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Consultar adeudo",
+  description:
+    "Consulta tu adeudo de agua en el portal oficial de ODAPAS Temascalcingo.",
+  alternates: {
+    canonical: "/consultar",
+  },
+};
 export default function Consultar() {
   const telefono = "5215642275320";
   const mensaje = encodeURIComponent(
