@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  verification: {
+    google: "0qlUtp7L0ITMR23yIAZi2oeKSOElmVMW16glS2VBCFA",
+  },
   openGraph: {
     title: "ODAPAS Temascalcingo | Portal oficial",
     description:
@@ -83,9 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className="site">
           <SiteHeader />
-
           <main className="main">{children}</main>
-
           <footer className="footer">
             <div className="container footerGrid">
               <div>
@@ -112,12 +113,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </ul>
               </div>
             </div>
-
             <div className="container footerBottom">
               <span className="muted">© {new Date().getFullYear()} ODAPAS Temascalcingo</span>
             </div>
           </footer>
-
           <OdapasBot />
         </div>
       </body>

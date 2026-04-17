@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import HeroRotator from "@/components/HeroRotator";
 import { AnimOnScroll } from "@/hooks/useInView";
 import { WHATSAPP_URL } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "ODAPAS Temascalcingo | Portal oficial de agua potable",
+  description:
+    "Portal oficial de ODAPAS Temascalcingo. Paga tu servicio de agua, consulta adeudos, reporta fugas y conoce información institucional del municipio.",
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function HomePage() {
   return (
