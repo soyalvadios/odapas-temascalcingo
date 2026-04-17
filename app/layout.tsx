@@ -43,9 +43,43 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "GovernmentOrganization",
+  name: "ODAPAS Temascalcingo",
+  alternateName:
+    "Organismo Descentralizado de Agua Potable, Alcantarillado y Saneamiento de Temascalcingo",
+  url: "https://www.odapastemascalcingo.com.mx",
+  logo: "https://www.odapastemascalcingo.com.mx/banner.png",
+  telephone: "+5215642275320",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Temascalcingo",
+    addressRegion: "Estado de México",
+    addressCountry: "MX",
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Temascalcingo",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+5215642275320",
+    contactType: "customer service",
+    availableLanguage: "Spanish",
+    url: "https://www.odapastemascalcingo.com.mx/contacto",
+  },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" data-scroll-behavior="smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
       <body>
         <div className="site">
           <SiteHeader />

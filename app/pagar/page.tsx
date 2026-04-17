@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 
-export default function PagarClient() {
+
+export default function Pagar() {
   const telefono = "5215642275320";
 
   const mensaje = encodeURIComponent(
@@ -46,6 +47,7 @@ export default function PagarClient() {
       </p>
 
       <div className="grid2">
+        {/* DATOS BANCARIOS */}
         <div className="card pad">
           <div className="cardH">Datos para transferencia</div>
 
@@ -89,6 +91,7 @@ export default function PagarClient() {
           </p>
         </div>
 
+        {/* TABLA COMPARATIVA */}
         <div className="card pad">
           <div className="cardH">Tarifas del servicio</div>
 
@@ -171,6 +174,7 @@ export default function PagarClient() {
           </p>
         </div>
 
+        {/* REFERENCIA Y VALIDACIÓN */}
         <div className="card pad">
           <div className="cardH">Importante antes de enviar tu comprobante</div>
 
@@ -191,6 +195,7 @@ export default function PagarClient() {
           </p>
         </div>
 
+        {/* ENVIAR COMPROBANTE */}
         <div className="card pad cardLink">
           <div className="cardH">Enviar comprobante</div>
 
