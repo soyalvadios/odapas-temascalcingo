@@ -1,14 +1,4 @@
 "use client";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Reportar fuga o incidencia",
-  description:
-    "Reporta fugas e incidencias relacionadas con el servicio de agua en Temascalcingo.",
-  alternates: {
-    canonical: "/reportar",
-  },
-};
 import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import type { LatLng, MapPickerProps } from "@/components/MapPicker";
@@ -63,11 +53,7 @@ async function reverseNominatim(lat: number, lng: number): Promise<ReverseNomina
     `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`,
     { headers: { Accept: "application/json" } }
   );
-
-  if (!response.ok) {
-    throw new Error("No se pudo consultar Nominatim");
-  }
-
+  if (!response.ok) throw new Error("No se pudo consultar Nominatim");
   return (await response.json()) as ReverseNominatimResult;
 }
 
@@ -148,12 +134,8 @@ export default function ReportarPage() {
   function showStatus(message: string, type: "info" | "error") {
     setStatusMessage(message);
     setStatusType(type);
-
     window.setTimeout(() => {
-      document.getElementById("statusBox")?.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-      });
+      document.getElementById("statusBox")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }, 100);
   }
 
@@ -162,37 +144,25 @@ export default function ReportarPage() {
       showStatus("Tu navegador no soporta geolocalización.", "error");
       return;
     }
-
     setAutoFilling(true);
     showStatus("Solicitando permiso de ubicación...", "info");
-
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
-
         setGeo({ lat, lng });
         showStatus("📍 Ubicación obtenida. Autocompletando campos...", "info");
-
         try {
           const data = await reverseNominatim(lat, lng);
           const address = data.address ?? {};
-
           setAddr((prev) => ({
             ...prev,
             cp: address.postcode || prev.cp,
             estado: address.state || prev.estado,
-            municipio:
-              address.city ||
-              address.town ||
-              address.village ||
-              address.municipality ||
-              prev.municipio,
-            colonia:
-              address.suburb || address.neighbourhood || address.quarter || prev.colonia,
+            municipio: address.city || address.town || address.village || address.municipality || prev.municipio,
+            colonia: address.suburb || address.neighbourhood || address.quarter || prev.colonia,
             calle: address.road || address.pedestrian || address.residential || prev.calle,
           }));
-
           showStatus("✓ Ubicación obtenida y campos autocompletados.", "info");
         } catch {
           showStatus("✓ Ubicación obtenida. Ajusta los campos si es necesario.", "info");
@@ -202,27 +172,15 @@ export default function ReportarPage() {
       },
       (error) => {
         setAutoFilling(false);
-
         if (error.code === 1) {
-          showStatus(
-            "Permiso denegado. Ve a la configuración del navegador y permite la ubicación para este sitio.",
-            "error"
-          );
+          showStatus("Permiso denegado. Ve a la configuración del navegador y permite la ubicación para este sitio.", "error");
           return;
         }
-
         if (error.code === 2) {
-          showStatus(
-            "No se pudo determinar tu ubicación. Intenta de nuevo o escribe la dirección.",
-            "error"
-          );
+          showStatus("No se pudo determinar tu ubicación. Intenta de nuevo o escribe la dirección.", "error");
           return;
         }
-
-        showStatus(
-          "Tiempo agotado. Intenta de nuevo o escribe la dirección manualmente.",
-          "error"
-        );
+        showStatus("Tiempo agotado. Intenta de nuevo o escribe la dirección manualmente.", "error");
       },
       { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
     );
@@ -230,48 +188,18 @@ export default function ReportarPage() {
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    if (!agreed) {
-      showStatus("Acepta el aviso de privacidad.", "error");
-      return;
-    }
-
-    if (!nombre.trim() || !apPaterno.trim()) {
-      showStatus("Completa tu nombre y apellido paterno.", "error");
-      return;
-    }
-
-    if (!descripcion.trim()) {
-      showStatus("Describe el problema antes de enviar.", "error");
-      return;
-    }
+    if (!agreed) { showStatus("Acepta el aviso de privacidad.", "error"); return; }
+    if (!nombre.trim() || !apPaterno.trim()) { showStatus("Completa tu nombre y apellido paterno.", "error"); return; }
+    if (!descripcion.trim()) { showStatus("Describe el problema antes de enviar.", "error"); return; }
 
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-      buildWhatsAppMessage({
-        nombre,
-        apPaterno,
-        apMaterno,
-        correo,
-        telefono,
-        tipo,
-        descripcion,
-        addr,
-        geo,
-      })
+      buildWhatsAppMessage({ nombre, apPaterno, apMaterno, correo, telefono, tipo, descripcion, addr, geo })
     )}`;
-
     window.open(url, "_blank", "noopener,noreferrer");
 
-    setNombre("");
-    setApPaterno("");
-    setApMaterno("");
-    setCorreo("");
-    setTelefono("");
-    setTipo("Fuga de agua");
-    setDescripcion("");
-    setAddr(ADDR_DEFAULT);
-    setGeo(defaultCenter);
-    setAgreed(false);
+    setNombre(""); setApPaterno(""); setApMaterno(""); setCorreo(""); setTelefono("");
+    setTipo("Fuga de agua"); setDescripcion(""); setAddr(ADDR_DEFAULT);
+    setGeo(defaultCenter); setAgreed(false);
     showStatus("✓ Se abrió WhatsApp con tu reporte. ¡Gracias por reportar!", "info");
   }
 
@@ -283,10 +211,7 @@ export default function ReportarPage() {
       </p>
 
       {statusMessage && (
-        <div
-          id="statusBox"
-          className={`statusBox ${statusType === "error" ? "statusBox--error" : ""}`}
-        >
+        <div id="statusBox" className={`statusBox ${statusType === "error" ? "statusBox--error" : ""}`}>
           {statusMessage}
         </div>
       )}
@@ -308,57 +233,26 @@ export default function ReportarPage() {
           <div className="row3">
             <div>
               <label className="label">Nombre(s) *</label>
-              <input
-                className="input"
-                name="nombre"
-                required
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
-              />
+              <input className="input" name="nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} />
             </div>
             <div>
               <label className="label">Apellido paterno *</label>
-              <input
-                className="input"
-                name="ap_paterno"
-                required
-                value={apPaterno}
-                onChange={(e) => setApPaterno(e.target.value)}
-              />
+              <input className="input" name="ap_paterno" required value={apPaterno} onChange={(e) => setApPaterno(e.target.value)} />
             </div>
             <div>
               <label className="label">Apellido materno</label>
-              <input
-                className="input"
-                name="ap_materno"
-                value={apMaterno}
-                onChange={(e) => setApMaterno(e.target.value)}
-              />
+              <input className="input" name="ap_materno" value={apMaterno} onChange={(e) => setApMaterno(e.target.value)} />
             </div>
           </div>
 
           <div className="row2">
             <div>
               <label className="label">Correo</label>
-              <input
-                className="input"
-                name="correo"
-                type="email"
-                placeholder="correo@ejemplo.com"
-                value={correo}
-                onChange={(e) => setCorreo(e.target.value)}
-              />
+              <input className="input" name="correo" type="email" placeholder="correo@ejemplo.com" value={correo} onChange={(e) => setCorreo(e.target.value)} />
             </div>
             <div>
               <label className="label">Teléfono</label>
-              <input
-                className="input"
-                name="telefono"
-                inputMode="tel"
-                placeholder="10 dígitos"
-                value={telefono}
-                onChange={(e) => setTelefono(e.target.value)}
-              />
+              <input className="input" name="telefono" inputMode="tel" placeholder="10 dígitos" value={telefono} onChange={(e) => setTelefono(e.target.value)} />
             </div>
           </div>
 
@@ -391,82 +285,41 @@ export default function ReportarPage() {
           <div className="row3">
             <div>
               <label className="label">Código postal</label>
-              <input
-                className="input"
-                name="cp"
-                value={addr.cp}
-                onChange={(e) => setField("cp", e.target.value)}
-              />
+              <input className="input" name="cp" value={addr.cp} onChange={(e) => setField("cp", e.target.value)} />
             </div>
             <div>
               <label className="label">Estado</label>
-              <input
-                className="input"
-                name="estado"
-                value={addr.estado}
-                onChange={(e) => setField("estado", e.target.value)}
-              />
+              <input className="input" name="estado" value={addr.estado} onChange={(e) => setField("estado", e.target.value)} />
             </div>
             <div>
               <label className="label">Municipio</label>
-              <input
-                className="input"
-                name="municipio"
-                value={addr.municipio}
-                onChange={(e) => setField("municipio", e.target.value)}
-              />
+              <input className="input" name="municipio" value={addr.municipio} onChange={(e) => setField("municipio", e.target.value)} />
             </div>
           </div>
 
           <div className="row2">
             <div>
               <label className="label">Colonia / comunidad</label>
-              <input
-                className="input"
-                name="colonia"
-                value={addr.colonia}
-                onChange={(e) => setField("colonia", e.target.value)}
-              />
+              <input className="input" name="colonia" value={addr.colonia} onChange={(e) => setField("colonia", e.target.value)} />
             </div>
             <div>
               <label className="label">Calle</label>
-              <input
-                className="input"
-                name="calle"
-                value={addr.calle}
-                onChange={(e) => setField("calle", e.target.value)}
-              />
+              <input className="input" name="calle" value={addr.calle} onChange={(e) => setField("calle", e.target.value)} />
             </div>
           </div>
 
           <div className="row3">
             <div>
               <label className="label">No. exterior</label>
-              <input
-                className="input"
-                name="no_ext"
-                value={addr.no_ext}
-                onChange={(e) => setField("no_ext", e.target.value)}
-              />
+              <input className="input" name="no_ext" value={addr.no_ext} onChange={(e) => setField("no_ext", e.target.value)} />
             </div>
             <div>
               <label className="label">No. interior</label>
-              <input
-                className="input"
-                name="no_int"
-                value={addr.no_int}
-                onChange={(e) => setField("no_int", e.target.value)}
-              />
+              <input className="input" name="no_int" value={addr.no_int} onChange={(e) => setField("no_int", e.target.value)} />
             </div>
             <div>
               <label className="label">Referencia</label>
-              <input
-                className="input"
-                name="referencia"
-                value={addr.referencia}
-                onChange={(e) => setField("referencia", e.target.value)}
-                placeholder="Entre calles, frente a..."
-              />
+              <input className="input" name="referencia" value={addr.referencia} onChange={(e) => setField("referencia", e.target.value)} placeholder="Entre calles, frente a..." />
             </div>
           </div>
 
