@@ -202,6 +202,23 @@ export default function HomePage() {
           </div>
         </AnimOnScroll>
       </section>
+      {/* Texto institucional para SEO — visible pero discreto */}
+<section className="container pageTight">
+  <div className="card pad" style={{ marginTop: 8 }}>
+    <h2 style={{ fontSize: "1.05rem", marginBottom: 8 }}>
+      ODAPAS Temascalcingo — Organismo de Agua Potable
+    </h2>
+    <p className="muted small" style={{ lineHeight: 1.7 }}>
+      El Organismo Descentralizado de Agua Potable, Alcantarillado y Saneamiento de
+      Temascalcingo (ODAPAS) es la institución municipal responsable del suministro de
+      agua potable, mantenimiento de drenaje y alcantarillado en el municipio de
+      Temascalcingo, Estado de México. A través de este portal puedes realizar tu{" "}
+      <Link href="/pagar">pago de agua en Temascalcingo</Link>, consultar tu adeudo,{" "}
+      <Link href="/reportar">reportar fugas</Link> y acceder a información oficial del
+      organismo.
+    </p>
+  </div>
+</section>
     </div>
   );
 }
