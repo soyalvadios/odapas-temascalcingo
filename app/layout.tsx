@@ -7,31 +7,13 @@ import OdapasBot from "@/components/OdapasBot";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.odapastemascalcingo.com.mx"),
   title: {
-    default: "ODAPAS Temascalcingo | Portal oficial",
+    default: "ODAPAS Temascalcingo | Portal oficial de agua potable",
     template: "%s | ODAPAS Temascalcingo",
   },
   description:
-    "Portal oficial de ODAPAS Temascalcingo. Consulta adeudos, realiza pagos, reporta fugas, revisa noticias, transparencia y datos de contacto.",
+    "Portal oficial de ODAPAS Temascalcingo. Paga tu servicio de agua, consulta adeudos, reporta fugas y conoce información institucional del municipio.",
   alternates: {
     canonical: "/",
-  },
-  verification: {
-    google: "0qlUtp7L0ITMR23yIAZi2oeKSOElmVMW16glS2VBCFA",
-  },
-  openGraph: {
-    title: "ODAPAS Temascalcingo | Portal oficial",
-    description:
-      "Consulta adeudos, realiza pagos, reporta fugas y revisa información oficial de ODAPAS Temascalcingo.",
-    url: "https://www.odapastemascalcingo.com.mx/",
-    siteName: "ODAPAS Temascalcingo",
-    locale: "es_MX",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "ODAPAS Temascalcingo | Portal oficial",
-    description:
-      "Consulta adeudos, realiza pagos, reporta fugas y revisa información oficial de ODAPAS Temascalcingo.",
   },
   robots: {
     index: true,
@@ -44,49 +26,54 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  openGraph: {
+    title: "ODAPAS Temascalcingo | Portal oficial de agua potable",
+    description:
+      "Portal oficial de ODAPAS Temascalcingo. Paga tu servicio de agua, consulta adeudos, reporta fugas y conoce información institucional del municipio.",
+    url: "https://www.odapastemascalcingo.com.mx/",
+    siteName: "ODAPAS Temascalcingo",
+    locale: "es_MX",
+    type: "website",
+    images: [
+      {
+        url: "/logo-odapas-oficial.png",
+        width: 1200,
+        height: 1200,
+        alt: "Logo oficial de ODAPAS Temascalcingo 2025-2027",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ODAPAS Temascalcingo | Portal oficial de agua potable",
+    description:
+      "Portal oficial de ODAPAS Temascalcingo. Paga tu servicio de agua, consulta adeudos, reporta fugas y conoce información institucional del municipio.",
+    images: ["/logo-odapas-oficial.png"],
+  },
 };
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "GovernmentOrganization",
+  "@type": "Organization",
   name: "ODAPAS Temascalcingo",
-  alternateName:
-    "Organismo Descentralizado de Agua Potable, Alcantarillado y Saneamiento de Temascalcingo",
   url: "https://www.odapastemascalcingo.com.mx",
-  logo: "https://www.odapastemascalcingo.com.mx/banner.png",
-  telephone: "+5215642275320",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Temascalcingo",
-    addressRegion: "Estado de México",
-    addressCountry: "MX",
-  },
-  areaServed: {
-    "@type": "City",
-    name: "Temascalcingo",
-  },
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+5215642275320",
-    contactType: "customer service",
-    availableLanguage: "Spanish",
-    url: "https://www.odapastemascalcingo.com.mx/contacto",
-  },
+  logo: "https://www.odapastemascalcingo.com.mx/logo-odapas-oficial.png",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" data-scroll-behavior="smooth">
-      <head>
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
-      </head>
-      <body>
+
         <div className="site">
           <SiteHeader />
+
           <main className="main">{children}</main>
+
           <footer className="footer">
             <div className="container footerGrid">
               <div>
@@ -113,10 +100,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </ul>
               </div>
             </div>
+
             <div className="container footerBottom">
               <span className="muted">© {new Date().getFullYear()} ODAPAS Temascalcingo</span>
             </div>
           </footer>
+
           <OdapasBot />
         </div>
       </body>
