@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Aviso de privacidad",
   description:
-    "Consulta el aviso de privacidad integral de ODAPAS Temascalcingo.",
+    "Consulta el aviso de privacidad simplificado de ODAPAS Temascalcingo.",
   alternates: {
     canonical: "/aviso-privacidad",
   },
@@ -42,7 +42,7 @@ export default function AvisoPrivacidad() {
     <div className="container page privacyPage">
       <section className="privacyHero card">
         <div className="badge">Protección de datos</div>
-        <h1>Aviso de privacidad integral</h1>
+        <h1>Aviso de privacidad simplificado</h1>
         <p className="muted privacyLead">
           Consulta la versión vigente del aviso de privacidad del Organismo Público Descentralizado Municipal
           para la Prestación de los Servicios de Agua Potable, Drenaje, Alcantarillado y Tratamiento de Aguas
@@ -51,7 +51,7 @@ export default function AvisoPrivacidad() {
 
         <div className="privacyHero__actions">
           <a
-            href="/docs/aviso-privacidad-integral-odapas-temascalcingo-2026.pdf"
+            href="/docs/aviso-privacidad-simplificado-odapas-temascalcingo-2026.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="btn primary"
@@ -59,7 +59,7 @@ export default function AvisoPrivacidad() {
             Ver PDF oficial
           </a>
           <a
-            href="/docs/aviso-privacidad-integral-odapas-temascalcingo-2026.pdf"
+            href="/docs/aviso-privacidad-simplificado-odapas-temascalcingo-2026.pdf"
             download
             className="btn"
           >
@@ -232,7 +232,7 @@ export default function AvisoPrivacidad() {
 
       <section className="card privacyFooterCard">
         <div>
-          <h2>Consulta la versión integral vigente</h2>
+          <h2>Consulta la versión simplificada vigente</h2>
           <p className="muted">
             Esta página presenta una versión web de consulta rápida. Para efectos formales, legales y de impresión,
             revisa el documento completo publicado por el organismo.
@@ -241,7 +241,7 @@ export default function AvisoPrivacidad() {
 
         <div className="privacyFooterCard__actions">
           <a
-            href="/docs/aviso-privacidad-integral-odapas-temascalcingo-2026.pdf"
+            href="/docs/aviso-privacidad-simplificado-odapas-temascalcingo-2026.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="btn primary"
