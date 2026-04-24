@@ -215,7 +215,7 @@ export default function RootLayout({
             aria-label="Contactar ODAPAS por WhatsApp"
             style={{
               position: "fixed",
-              bottom: "90px",
+              bottom: "110px",
               right: "20px",
               width: "50px",
               height: "50px",
