@@ -1757,4 +1757,34 @@ body.menu-open{
   .newsGallery{
     grid-template-columns:1fr;
   }
+  /* ── Fix embed Facebook en móvil ── */
+.fb-post > span,
+.fb-post > span > iframe {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.fbEmbedWrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.fbSection {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.fbItem {
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .fbItem {
+    grid-template-columns: 1fr;
+  }
+}
+
 }

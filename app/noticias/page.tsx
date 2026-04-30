@@ -12,7 +12,8 @@ export const metadata: Metadata = {
 const publicacionesFB = [
   {
     href: "https://www.facebook.com/odapastemascalcingo/posts/pfbid0WXxNnhDvwmKMquCy5VkYKUczrfmHmFtihdsgTeaVtYJkMUsrgxK6hK2n6AhMAb8ml",
-    titulo: "Atención en campo — Instalación de toma domiciliaria en calle Alfredo del Mazo",
+    titulo:
+      "Atención en campo — Instalación de toma domiciliaria en calle Alfredo del Mazo",
     fecha: "Marzo 2026",
     descripcion:
       "Nuestro equipo realizó excavación, colocación de poliducto e hidrotoma para conectar el servicio de agua potable al domicilio del usuario.",
@@ -60,6 +61,7 @@ export default function NoticiasPage() {
               y avisos generales a la población.
             </p>
           </article>
+
           <article className="card pad">
             <div className="badge">Trabajos</div>
             <div className="cardH">Acciones operativas del organismo</div>
@@ -68,6 +70,7 @@ export default function NoticiasPage() {
               atención en campo.
             </p>
           </article>
+
           <article className="card pad">
             <div className="badge">Comunidad</div>
             <div className="cardH">Información institucional</div>
@@ -78,48 +81,47 @@ export default function NoticiasPage() {
           </article>
         </section>
 
-        {/* ── Sección Facebook ── */}
         <section className="card pad">
           <div className="badge" style={{ marginBottom: "0.5rem" }}>
             Publicaciones recientes
           </div>
+
           <h2 style={{ marginBottom: "0.25rem" }}>Desde nuestro Facebook</h2>
+
           <p className="muted small" style={{ marginBottom: "1.5rem" }}>
             Actividades, trabajos y avisos directamente desde nuestra página
             oficial.
           </p>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+          <div className="fbSection">
             {publicacionesFB.map((pub) => (
-              <div
-                key={pub.href}
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "1.5rem",
-                  alignItems: "flex-start",
-                }}
-              >
-                {/* Embed oficial de Facebook */}
-                <div
-                  className="fb-post"
-                  data-href={pub.href}
-                  data-width="500"
-                  data-show-text="true"
-                />
+              <div key={pub.href} className="fbItem">
+                <div className="fbEmbedWrap">
+                  <div
+                    className="fb-post"
+                    data-href={pub.href}
+                    data-width="500"
+                    data-show-text="true"
+                  />
+                </div>
 
-                {/* Metadatos de la publicación */}
-                <div style={{ flex: "1", minWidth: "220px" }}>
+                <div>
                   <div className="badge" style={{ marginBottom: "0.5rem" }}>
                     {pub.badge}
                   </div>
+
                   <h3 style={{ marginBottom: "0.25rem" }}>{pub.titulo}</h3>
-                  <p className="muted small" style={{ marginBottom: "0.5rem" }}>
+
+                  <p
+                    className="muted small"
+                    style={{ marginBottom: "0.5rem" }}
+                  >
                     {pub.fecha}
                   </p>
+
                   <p className="muted small">{pub.descripcion}</p>
-                  
-                                     <a
+
+                  <a
                     href={pub.href}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -134,7 +136,6 @@ export default function NoticiasPage() {
           </div>
         </section>
 
-        {/* ── Galería existente ── */}
         <section className="newsArticle card">
           <div className="newsArticle__header">
             <div>
@@ -146,6 +147,7 @@ export default function NoticiasPage() {
                 ejecución de trabajos del organismo en Temascalcingo.
               </p>
             </div>
+
             <div className="newsMeta">
               <span className="newsMeta__pill">ODAPAS Temascalcingo</span>
               <span className="newsMeta__pill">Trabajo en sitio</span>
@@ -157,7 +159,9 @@ export default function NoticiasPage() {
               <figure key={src} className="newsGallery__item">
                 <Image
                   src={src}
-                  alt={`Trabajo operativo de ODAPAS Temascalcingo en campo, fotografía ${index + 1}`}
+                  alt={`Trabajo operativo de ODAPAS Temascalcingo en campo, fotografía ${
+                    index + 1
+                  }`}
                   width={1600}
                   height={1200}
                   className="newsGallery__image"
@@ -175,6 +179,7 @@ export default function NoticiasPage() {
                 revisión y seguimiento de acciones del organismo.
               </p>
             </article>
+
             <article className="card newsMiniCard">
               <h3>Objetivo de publicación</h3>
               <p>
