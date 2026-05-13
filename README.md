@@ -1,30 +1,79 @@
-# ODAPAS Temascalcingo
+<div align="center">
 
-Sistema y recursos relacionados con procesos y herramientas de apoyo para ODAPAS Temascalcingo.
+<img src="./public/branding/logo-odapas-2025.png" width="220"/>
 
-## Descripción
+# 💧 ODAPAS Temascalcingo
 
-Este repositorio contiene componentes de desarrollo, documentación técnica y recursos utilizados para pruebas y despliegues internos del proyecto.
+### Portal institucional • Servicios ciudadanos • 2025–2027
 
-## Tecnologías
+![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge\&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge\&logo=typescript)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge\&logo=tailwind-css)
+![Status](https://img.shields.io/badge/status-en%20desarrollo-8A0C52?style=for-the-badge)
 
-* HTML
-* CSS
-* JavaScript
-* PHP
+</div>
 
-## Estado del proyecto
+---
 
-En desarrollo.
+## 🚀 Descripción
 
-## Seguridad
+Portal web desarrollado para modernizar la presencia digital y los servicios ciudadanos de ODAPAS Temascalcingo.
 
-Por motivos de seguridad y privacidad:
+Incluye:
 
-* No se publican credenciales
-* No se publican configuraciones sensibles
-* No se incluye información de infraestructura interna
+* sistema de reportes
+* integración WhatsApp
+* SEO optimizado
+* diseño responsive
+* arquitectura modular
+* experiencia mobile-first
 
-## Licencia
+---
 
-Uso interno / Reservados todos los derechos.
+## 🛠 Stack
+
+`Next.js` · `React` · `TypeScript` · `TailwindCSS` · `Node.js`
+
+---
+
+## 📷 Capturas
+
+| Inicio                                               | Reportes                                                          |
+| ---------------------------------------------------- | ----------------------------------------------------------------- |
+| <img src="./public/slides/slide1.png" width="100%"/> | <img src="./public/noticias/trabajos-odapas-1.png" width="100%"/> |
+
+---
+
+## 📁 Estructura
+
+```bash
+/app
+/components
+/hooks
+/lib
+/public
+```
+
+---
+
+## 🔒 Seguridad
+
+Por privacidad y seguridad:
+
+* no se incluyen credenciales
+* no se publican configuraciones sensibles
+* no se expone infraestructura interna
+
+---
+
+## 📌 Estado del proyecto
+
+🟢 En desarrollo activo.
+
+---
+
+<div align="center">
+
+### ⚡ Tecnología con identidad institucional
+
+</div>
