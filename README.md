@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./public/branding/logo-odapas-2025.png" width="220"/>
+<img src="./public/logo.jpg" width="220"/>
 
 # 💧 ODAPAS Temascalcingo
 
