@@ -71,9 +71,3 @@ Por privacidad y seguridad:
 🟢 En desarrollo activo.
 
 ---
-
-<div align="center">
-
-### ⚡ Tecnología con identidad institucional
-
-</div>
