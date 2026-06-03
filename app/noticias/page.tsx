@@ -9,17 +9,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/noticias" },
 };
 
-const publicacionesFB = [
-  {
-    href: "https://www.facebook.com/odapastemascalcingo/posts/pfbid0WXxNnhDvwmKMquCy5VkYKUczrfmHmFtihdsgTeaVtYJkMUsrgxK6hK2n6AhMAb8ml",
-    titulo: "Atención en campo — Instalación de toma domiciliaria en calle Alfredo del Mazo",
-    fecha: "Marzo 2026",
-    descripcion:
-      "Nuestro equipo realizó excavación, colocación de poliducto e hidrotoma para conectar el servicio de agua potable al domicilio del usuario.",
-    badge: "Trabajos",
-  },
-];
-
 const fotosTrabajo = [
   "/noticias/trabajos-odapas-1.png",
   "/noticias/trabajos-odapas-2.png",
@@ -89,49 +78,29 @@ export default function NoticiasPage() {
             oficial.
           </p>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-            {publicacionesFB.map((pub) => (
-              <div
-                key={pub.href}
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "1.5rem",
-                  alignItems: "flex-start",
-                }}
-              >
-                {/* Embed oficial de Facebook */}
-                <div
-                  className="fb-post"
-                  data-href={pub.href}
-                  data-width="500"
-                  data-show-text="true"
-                />
+          <div
+            className="fb-page"
+            data-href="https://www.facebook.com/odapastemascalcingo/"
+            data-tabs="timeline"
+            data-width="500"
+            data-height="700"
+            data-small-header="false"
+            data-adapt-container-width="true"
+            data-hide-cover="false"
+            data-show-facepile="false"
+          />
 
-                {/* Metadatos de la publicación */}
-                <div style={{ flex: "1", minWidth: "220px" }}>
-                  <div className="badge" style={{ marginBottom: "0.5rem" }}>
-                    {pub.badge}
-                  </div>
-                  <h3 style={{ marginBottom: "0.25rem" }}>{pub.titulo}</h3>
-                  <p className="muted small" style={{ marginBottom: "0.5rem" }}>
-                    {pub.fecha}
-                  </p>
-                  <p className="muted small">{pub.descripcion}</p>
-                  
-                                     <a
-                    href={pub.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn"
-                    style={{ marginTop: "1rem", display: "inline-block" }}
-                  >
-                    Ver en Facebook →
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
+          <p className="muted small" style={{ marginTop: "1rem" }}>
+            También puedes consultar las publicaciones directamente en{" "}
+            <a
+              href="https://www.facebook.com/odapastemascalcingo/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Facebook
+            </a>
+            .
+          </p>
         </section>
 
         {/* ── Galería existente ── */}
