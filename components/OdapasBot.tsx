@@ -33,7 +33,7 @@ export default function OdapasBot() {
         <div className="odapasBotPanel" role="dialog" aria-label="Asistente ODAPAS">
           <div className="odapasBotHeader">
             <div className="odapasBotHeaderInfo">
-              <img src="/mascota-odapas.png" alt="Mascota ODAPAS" className="odapasBotHeaderMascot" />
+              <img src="/branding/mascota-odapas.png" alt="Mascota ODAPAS" className="odapasBotHeaderMascot" />
               <div>
                 <div className="odapasBotTitle">Asistente ODAPAS</div>
                 <div className="odapasBotSubtitle">Respuestas rápidas con botones</div>
@@ -121,7 +121,7 @@ export default function OdapasBot() {
       ) : null}
 
       <button type="button" className="odapasBotLauncher" onClick={() => setOpen((prev) => !prev)} aria-label="Abrir asistente ODAPAS">
-        <img src="/mascota-odapas.png" alt="Mascota ODAPAS" className="odapasBotMascot" />
+        <img src="/branding/mascota-odapas.png" alt="Mascota ODAPAS" className="odapasBotMascot" />
       </button>
     </div>
   );
